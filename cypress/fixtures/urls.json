@@ -1,0 +1,9 @@
+{
+    "checkboxes": "https://the-internet.herokuapp.com/checkboxes",
+    "dropdown": "https://the-internet.herokuapp.com/dropdown",
+    "drag_and_drop": "https://the-internet.herokuapp.com/drag_and_drop",
+    "upload": "https://the-internet.herokuapp.com/upload",
+    "login": "https://the-internet.herokuapp.com/login",
+    "redirect": "https://the-internet.herokuapp.com/redirector",
+    "api_restful_dev": "https://api-restful-api.dev"
+}
