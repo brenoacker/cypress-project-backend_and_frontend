@@ -9,9 +9,6 @@
       "lib": ["es6", "dom"],
         "types": ["cypress", "node"],
         "baseUrl": ".",
-        "paths": {
-          "@fixtures/*": ["cypress/fixtures/*"]
-        }
     },
     "include": ["cypress/**/*.ts"]
 }
