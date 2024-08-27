@@ -32,3 +32,21 @@ export const objectSchema = {
     }
   };
   
+export const objectByIdSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    name: { type: "string" },
+    data: {
+      type: "object",
+      properties: {
+        year: { type: "number" },
+        price: { type: "number" },
+        "CPU model": { type: "string" },
+        "Hard disk size": { type: "string" }
+      },
+      required: ["year", "price", "CPU model", "Hard disk size"]
+    }
+  },
+  required: ["id", "name", "data"]
+};
