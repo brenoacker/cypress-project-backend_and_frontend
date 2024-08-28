@@ -1,19 +1,12 @@
 import * as urls from 'cypress/fixtures/urls.json';	
 import httpRequests from 'cypress/support/requests/httpRequests';
 import CommonHeaders from 'cypress/support/headers/commonHeaders';
+import CellphonesPayloads from 'cypress/support/payloads/cellphones.payloads';
 
 describe('Update a specific field of a new cellphone', () => {
     let cellphoneId: string;
     const objectsUrl = urls.api_restful_dev;
-    const newCellphonePayload =  {
-        "name": "Apple MacBook Pro 16",
-        "data": {
-           "year": 2019,
-           "price": 1849.99,
-           "CPU model": "Intel Core i9",
-           "Hard disk size": "1 TB"
-        }
-      }
+    const newCellphonePayload = CellphonesPayloads.postCellphonePayload();
 
     it('should register a new cellphone', () => {
         cy.log('Making a POST request to the /objects endpoint')
@@ -41,9 +34,7 @@ describe('Update a specific field of a new cellphone', () => {
     });
 
     it('should update the registered cellphone', () => {
-        const updateCellphonePayload = {
-            "name": "Apple MacBook Pro 17"
-        }
+        const updateCellphonePayload = CellphonesPayloads.patchCellphonePayload();
         cy.log('Making a PATCH request to the /objects/{id} endpoint')
         httpRequests.patch(objectsUrl + '/objects/' + cellphoneId, CommonHeaders.default(), updateCellphonePayload).then((response) => {
             cy.log('Validating status code')

@@ -1,19 +1,13 @@
 import * as urls from 'cypress/fixtures/urls.json';	
 import httpRequests from 'cypress/support/requests/httpRequests';
 import CommonHeaders from 'cypress/support/headers/commonHeaders';
+import CellphonesPayloads from 'cypress/support/payloads/cellphones.payloads';
 
 describe('Update all fields of a new cellphone', () => {
     let cellphoneId: string;
     const objectsUrl = urls.api_restful_dev;
-    const newCellphonePayload =  {
-        "name": "Apple MacBook Pro 16",
-        "data": {
-           "year": 2019,
-           "price": 1849.99,
-           "CPU model": "Intel Core i9",
-           "Hard disk size": "1 TB"
-        }
-      }
+    const newCellphonePayload =  CellphonesPayloads.postCellphonePayload();
+    const updateCellphonePayload = CellphonesPayloads.putCellphonePayload();
 
     it('should register a new cellphone', () => {
         cy.log('Making a POST request to the /objects endpoint')
@@ -41,15 +35,6 @@ describe('Update all fields of a new cellphone', () => {
     });
 
     it('should update all fields in the registered cellphone', () => {
-        const updateCellphonePayload = {
-            "name": "Apple MacBook Pro 16",
-            "data": {
-               "year": 2021,
-               "price": 2849.99,
-               "CPU model": "Intel Core i7",
-               "Hard disk size": "512 Gb"
-            }
-          }
         cy.log('Making a PUT request to the /objects/{id} endpoint')
         httpRequests.put(objectsUrl + '/objects/' + cellphoneId, CommonHeaders.default(), updateCellphonePayload).then((response) => {
             cy.log('Validating status code')
